@@ -20,16 +20,16 @@ public class TestGestor {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Agregar tarea seleccionado");
+                    GestorTareas.agregarTarea();
                     break;
                 case 2:
-                    System.out.println("Listar tareas seleccionado");
+                    GestorTareas.mostrarTareas();
                     break;
                 case 3:
-                    System.out.println("Marcar como completada seleccionado");
+                    GestorTareas.marcarComoCompletada();
                     break;
                 case 4:
-                    System.out.println("Eliminar completadas seleccionado");
+                    GestorTareas.eliminarCompletadas();
                     break;
                 case 5:
                     salir = true;
