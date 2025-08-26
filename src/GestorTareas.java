@@ -39,7 +39,6 @@ public class GestorTareas {
             continuar = consola.nextLine();
 
         } while (continuar.equalsIgnoreCase("S"));
-        consola.close();
     }
 
     public static void mostrarTareas() {
@@ -71,7 +70,6 @@ public class GestorTareas {
         try {
             System.out.println("Indique el número de tarea que quiere marcar como completada:");
             int index = Integer.parseInt(consola.nextLine());
-            consola.close();
             if (index < 1 || index > tareas.size()) {
                 System.out.println("Número de tarea inválido.");
                 return;
