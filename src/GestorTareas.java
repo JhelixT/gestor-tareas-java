@@ -60,10 +60,51 @@ public class GestorTareas {
     }
 
     public static void marcarComoCompletada() {
-    
+        if (tareas.isEmpty()) {
+            System.out.println("No hay tareas registradas.");
+            return;
+        }
+
+        mostrarTareas();
+        Scanner consola = new Scanner(System.in);
+        
+        try {
+            System.out.println("Indique el número de tarea que quiere marcar como completada:");
+            int index = Integer.parseInt(consola.nextLine());
+            consola.close();
+            if (index < 1 || index > tareas.size()) {
+                System.out.println("Número de tarea inválido.");
+                return;
+            }
+
+            Tarea tarea = tareas.get(index - 1);
+            if (tarea.getEstado().equalsIgnoreCase("completada")) {
+                System.out.println("La tarea ya está marcada como completada.");
+                return;
+            }
+
+            tarea.setEstado("completada");
+            System.out.println("Tarea marcada como completada exitosamente.");
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor, ingrese un número válido.");
+        }
     }
 
     public static void eliminarCompletadas() {
-        
+        if (tareas.isEmpty()) {
+            System.out.println("No hay tareas registradas.");
+            return;
+        }
+
+        int sizePrevio = tareas.size();
+        tareas.removeIf(tarea -> tarea.getEstado().equalsIgnoreCase("completada"));
+        int tareasEliminadas = sizePrevio - tareas.size();
+
+        if (tareasEliminadas > 0) {
+            System.out.printf("Se han eliminado %d tareas completadas.%n", tareasEliminadas);
+        } else {
+            System.out.println("No había tareas completadas para eliminar.");
+        }
     }
 }
